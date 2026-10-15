@@ -3,6 +3,7 @@ import { ARTICLES } from './data/articles.ts';
 import { CATEGORIES } from './data/authors.ts';
 import { Article, CategoryType } from './types/blog.ts';
 import { searchArticles, generateArticleJsonLd } from './utils/blogLogic.ts';
+import { getAssetUrl } from './utils/imageHelper.ts';
 
 // Components
 import { Header } from './components/Header.tsx';
@@ -279,24 +280,35 @@ export default function App() {
                     <div
                       key={`guide-${art.id}`}
                       onClick={() => navigateTo('article', art.slug)}
-                      className="group cursor-pointer p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700 flex flex-col justify-between transition-colors"
+                      className="group cursor-pointer rounded-2xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700 overflow-hidden flex flex-col sm:flex-row transition-all duration-200"
                     >
-                      <div>
-                        <div className="text-[11px] font-semibold text-indigo-600 dark:text-indigo-400 uppercase tracking-widest mb-2">
-                          Interactive Guide · {art.readTimeMinutes} Min Read
-                        </div>
-                        <h3 className="font-serif font-bold text-xl text-slate-900 dark:text-white group-hover:text-indigo-600 transition-colors mb-2">
-                          {art.title}
-                        </h3>
-                        <p className="text-xs text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
-                          {art.excerpt}
-                        </p>
+                      <div className="sm:w-2/5 relative overflow-hidden bg-slate-100 dark:bg-slate-800 aspect-[16/10] sm:aspect-auto">
+                        <img
+                          src={getAssetUrl(art.featuredImage)}
+                          alt={art.featuredImageAlt}
+                          referrerPolicy="no-referrer"
+                          loading="lazy"
+                          className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-300"
+                        />
                       </div>
-                      <div className="flex items-center justify-between pt-3 border-t border-slate-100 dark:border-slate-800 text-xs text-slate-500">
-                        <span>By {art.author.name}</span>
-                        <span className="text-indigo-600 dark:text-indigo-400 font-medium">
-                          Launch Guide →
-                        </span>
+                      <div className="sm:w-3/5 p-6 flex flex-col justify-between">
+                        <div>
+                          <div className="text-[11px] font-semibold text-indigo-600 dark:text-indigo-400 uppercase tracking-widest mb-2">
+                            Interactive Guide · {art.readTimeMinutes} Min Read
+                          </div>
+                          <h3 className="font-serif font-bold text-lg text-slate-900 dark:text-white group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors mb-2 leading-snug">
+                            {art.title}
+                          </h3>
+                          <p className="text-xs text-slate-600 dark:text-slate-400 leading-relaxed mb-4 line-clamp-2">
+                            {art.excerpt}
+                          </p>
+                        </div>
+                        <div className="flex items-center justify-between pt-3 border-t border-slate-100 dark:border-slate-800 text-xs text-slate-500">
+                          <span>By {art.author.name}</span>
+                          <span className="text-indigo-600 dark:text-indigo-400 font-medium">
+                            Launch Guide →
+                          </span>
+                        </div>
                       </div>
                     </div>
                   ))}
@@ -333,18 +345,39 @@ export default function App() {
               <span>Back to All Articles</span>
             </button>
 
-            <div className="mb-10 p-8 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800">
-              <span className="text-xs font-semibold text-indigo-600 dark:text-indigo-400 uppercase tracking-widest">
-                Category Archive
-              </span>
-              <h1 className="font-serif font-bold text-3xl sm:text-4xl text-slate-900 dark:text-white mt-1 mb-3">
-                {selectedCategory}
-              </h1>
-              <p className="text-sm text-slate-600 dark:text-slate-400 max-w-2xl leading-relaxed">
-                {CATEGORIES.find((c) => c.name === selectedCategory)?.description ||
-                  `In-depth publications and guides categorized under ${selectedCategory}.`}
-              </p>
-            </div>
+            {(() => {
+              const categoryInfo = CATEGORIES.find((c) => c.name === selectedCategory);
+              return (
+                <div className="mb-10 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 overflow-hidden grid grid-cols-1 md:grid-cols-12 items-stretch">
+                  <div className={`${categoryInfo?.image ? 'md:col-span-8' : 'md:col-span-12'} p-6 sm:p-8 flex flex-col justify-center`}>
+                    <span className="text-xs font-semibold text-indigo-600 dark:text-indigo-400 uppercase tracking-widest">
+                      Category Archive
+                    </span>
+                    <h1 className="font-serif font-bold text-3xl sm:text-4xl text-slate-900 dark:text-white mt-1 mb-3">
+                      {selectedCategory}
+                    </h1>
+                    <p className="text-sm text-slate-600 dark:text-slate-400 max-w-2xl leading-relaxed mb-4">
+                      {categoryInfo?.description ||
+                        `In-depth publications and guides categorized under ${selectedCategory}.`}
+                    </p>
+                    <div className="text-xs font-mono text-slate-400">
+                      {filteredArticles.length} Curated Articles in this Section
+                    </div>
+                  </div>
+                  {categoryInfo?.image && (
+                    <div className="md:col-span-4 relative overflow-hidden min-h-[160px] sm:min-h-[200px] bg-slate-100 dark:bg-slate-800">
+                      <img
+                        src={getAssetUrl(categoryInfo.image)}
+                        alt={`${selectedCategory} archive editorial visual`}
+                        referrerPolicy="no-referrer"
+                        className="w-full h-full object-cover object-center"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-r from-white dark:from-slate-900 via-transparent to-transparent hidden md:block" />
+                    </div>
+                  )}
+                </div>
+              );
+            })()}
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
               {filteredArticles.map((art) => (

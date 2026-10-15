@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Article } from '../types/blog.ts';
 import { AdPlacement } from './AdPlacement.tsx';
+import { getAssetUrl } from '../utils/imageHelper.ts';
 import {
   Clock,
   Calendar,
@@ -161,7 +162,7 @@ export const ArticleView: React.FC<ArticleViewProps> = ({
         {/* Featured Image Directly Below Title */}
         <figure className="mb-10 rounded-xl overflow-hidden bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-800">
           <img
-            src={article.featuredImage}
+            src={getAssetUrl(article.featuredImage)}
             alt={article.featuredImageAlt}
             referrerPolicy="no-referrer"
             className="w-full max-h-[520px] object-cover object-center"
@@ -451,7 +452,7 @@ export const ArticleView: React.FC<ArticleViewProps> = ({
                   className="group cursor-pointer flex flex-col bg-white dark:bg-slate-900 rounded-xl border border-slate-200/80 dark:border-slate-800 overflow-hidden hover:border-slate-300 dark:hover:border-slate-700 transition-colors"
                 >
                   <img
-                    src={rel.featuredImage}
+                    src={getAssetUrl(rel.featuredImage)}
                     alt={rel.featuredImageAlt}
                     referrerPolicy="no-referrer"
                     className="aspect-[16/10] object-cover object-center group-hover:scale-105 transition-transform duration-300"

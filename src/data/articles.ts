@@ -1,11 +1,19 @@
 import { Article } from '../types/blog.ts';
 import { AUTHORS } from './authors.ts';
 
-// Generated image assets paths
-const IMG_AI = '/src/assets/images/ai_tools_hero_1792057982525.jpg';
-const IMG_PRIVACY = '/src/assets/images/privacy_security_1792057984386.jpg';
-const IMG_PRODUCTIVITY = '/src/assets/images/productivity_desk_1792057984676.jpg';
-const IMG_CLOUD = '/src/assets/images/cloud_laptop_1792057984784.jpg';
+// Dedicated, unique local images for every article in public/images/blog/
+const IMG_AI_STUDENTS = '/images/blog/best-free-ai-tools-for-students.jpg';
+const IMG_PRIVACY_ONLINE = '/images/blog/how-to-protect-your-privacy-online.jpg';
+const IMG_CHROME_FEATURES = '/images/blog/useful-google-chrome-productivity-features.jpg';
+const IMG_STUDY_SCHEDULE = '/images/blog/how-to-create-a-weekly-study-schedule.jpg';
+const IMG_DIGITAL_FILES = '/images/blog/how-to-organize-digital-files.jpg';
+const IMG_SECURITY_MISTAKES = '/images/blog/common-online-security-mistakes.jpg';
+const IMG_AI_PRODUCTIVITY = '/images/blog/how-ai-tools-can-improve-productivity.jpg';
+const IMG_PASSWORDS = '/images/blog/how-to-create-strong-passwords.jpg';
+const IMG_CLOUD_STORAGE = '/images/blog/beginners-guide-to-cloud-storage.jpg';
+const IMG_LAPTOP_PERFORMANCE = '/images/blog/how-to-improve-laptop-performance.jpg';
+const IMG_REMOTE_WORK = '/images/blog/digital-productivity-tips-for-remote-workers.jpg';
+const IMG_PHISHING = '/images/blog/how-to-recognize-phishing-emails.jpg';
 
 export const ARTICLES: Article[] = [
   // 1. Best Free AI Tools for Students
@@ -19,7 +27,7 @@ export const ARTICLES: Article[] = [
     secondaryKeywords: ['free ai study apps', 'academic research tools', 'ai summarization for students', 'student productivity tools'],
     excerpt: 'An objective evaluation of free artificial intelligence tools that help students parse dense academic literature, construct active recall decks, and outline essays ethically.',
     category: 'Artificial Intelligence',
-    featuredImage: IMG_AI,
+    featuredImage: IMG_AI_STUDENTS,
     featuredImageAlt: 'Modern student study desk with open laptop displaying artificial intelligence neural network diagrams and handwritten study notes',
     author: AUTHORS.sarah,
     publishDate: '2026-10-02',
@@ -158,7 +166,7 @@ export const ARTICLES: Article[] = [
     secondaryKeywords: ['online privacy tips', 'browser privacy guide', 'dns over https', 'stop web tracking', 'digital footprint reduction'],
     excerpt: 'An actionable, non-paranoid guide to reclaiming your digital privacy through hardened browser configurations, encrypted DNS resolvers, and credential compartmentalization.',
     category: 'Online Privacy',
-    featuredImage: IMG_PRIVACY,
+    featuredImage: IMG_PRIVACY_ONLINE,
     featuredImageAlt: 'Glowing digital cryptographic key on dark architectural marble table reflecting secure cryptographic protocols',
     author: AUTHORS.marcus,
     publishDate: '2026-10-04',
@@ -267,8 +275,8 @@ export const ARTICLES: Article[] = [
     secondaryKeywords: ['google chrome productivity', 'chrome tab groups', 'chrome memory saver', 'browser shortcuts', 'tab management tips'],
     excerpt: 'An in-depth breakdown of native Chrome capabilities that streamline tab overload, reduce memory consumption, and accelerate daily research workflows.',
     category: 'Productivity',
-    featuredImage: IMG_PRODUCTIVITY,
-    featuredImageAlt: 'Modern desk with ultra-wide monitor showing clean browser tab layouts, structured calendar, and productivity workflows',
+    featuredImage: IMG_CHROME_FEATURES,
+    featuredImageAlt: 'Modern laptop displaying organized Google Chrome tab groups, clean bookmarks, and research workflow on wooden desk',
     author: AUTHORS.elena,
     publishDate: '2026-10-05',
     updatedDate: '2026-10-13',
@@ -363,8 +371,8 @@ export const ARTICLES: Article[] = [
     secondaryKeywords: ['study schedule template', 'student time blocking', 'academic planning', 'exam preparation schedule'],
     excerpt: 'Ditch unrealistic 14-hour marathon calendars. Learn how to construct an empirical weekly study schedule based on cognitive energy peaks and built-in failure buffers.',
     category: 'Productivity',
-    featuredImage: IMG_PRODUCTIVITY,
-    featuredImageAlt: 'Minimalist desktop calendar planner with weekly hourly blocks, highlighting study intervals and rest periods',
+    featuredImage: IMG_STUDY_SCHEDULE,
+    featuredImageAlt: 'Minimalist desktop calendar planner with weekly hourly blocks, highlighting study intervals, focus sessions, and rest periods',
     author: AUTHORS.sarah,
     publishDate: '2026-10-06',
     updatedDate: '2026-10-12',
@@ -453,8 +461,8 @@ export const ARTICLES: Article[] = [
     secondaryKeywords: ['file organization system', 'digital decluttering', 'folder hierarchy', 'iso date naming convention'],
     excerpt: 'Stop drowning in an endless Downloads directory. Discover an intuitive 4-tier folder hierarchy and strict file-naming convention that ensures you can locate any document in under ten seconds.',
     category: 'How-To Guides',
-    featuredImage: IMG_CLOUD,
-    featuredImageAlt: 'Clean desktop folder directory visualization showing hierarchical taxonomy and organized file icons',
+    featuredImage: IMG_DIGITAL_FILES,
+    featuredImageAlt: 'Modern desktop monitor showing a clean structured folder directory hierarchy with organized digital archives',
     author: AUTHORS.david,
     publishDate: '2026-10-07',
     updatedDate: '2026-10-13',
@@ -540,8 +548,8 @@ export const ARTICLES: Article[] = [
     secondaryKeywords: ['cybersecurity mistakes', 'account security tips', 'sms 2fa vulnerabilities', 'prevent account takeover'],
     excerpt: 'Most account compromises do not involve sophisticated cinematic hackers; they stem from preventable security hygiene errors like password repetition and SMS verification loopholes.',
     category: 'Online Privacy',
-    featuredImage: IMG_PRIVACY,
-    featuredImageAlt: 'Cybersecurity vulnerability concept with illuminated data lock and server matrix',
+    featuredImage: IMG_SECURITY_MISTAKES,
+    featuredImageAlt: 'Cybersecurity defense concept with glowing cryptographic shield and threat mitigation telemetry on dark glass',
     author: AUTHORS.marcus,
     publishDate: '2026-10-08',
     updatedDate: '2026-10-14',
@@ -627,8 +635,8 @@ export const ARTICLES: Article[] = [
     secondaryKeywords: ['workplace ai productivity', 'generative ai workflows', 'automation for knowledge workers', 'ai meeting summaries'],
     excerpt: 'Move past the hype of "replacing workers." Explore concrete cognitive automation workflows where artificial intelligence eliminates mechanical drudgery and accelerates deep output.',
     category: 'Artificial Intelligence',
-    featuredImage: IMG_AI,
-    featuredImageAlt: 'Professional workspace with laptop rendering analytical generative workflows and clean task metrics',
+    featuredImage: IMG_AI_PRODUCTIVITY,
+    featuredImageAlt: 'Professional software engineer workstation with curved monitors showing AI automation data charts and generative pipelines',
     author: AUTHORS.elena,
     publishDate: '2026-10-09',
     updatedDate: '2026-10-14',
@@ -709,8 +717,8 @@ export const ARTICLES: Article[] = [
     secondaryKeywords: ['strong password generator', 'passphrase method', 'password entropy', 'best password managers', 'cyber hygiene'],
     excerpt: 'Why Tr0ub4dor&3 is weak and four random dictionary words are virtually unbreakable. Discover the mathematics of entropy and how to secure every account effortlessly.',
     category: 'Online Privacy',
-    featuredImage: IMG_PRIVACY,
-    featuredImageAlt: 'Cryptographic encryption lock visualization emphasizing password security and entropy',
+    featuredImage: IMG_PASSWORDS,
+    featuredImageAlt: 'Cryptographic Diceware passphrase visualization with brass security token, dice entropy, and password vault notes on dark stone',
     author: AUTHORS.marcus,
     publishDate: '2026-10-10',
     updatedDate: '2026-10-14',
@@ -790,8 +798,8 @@ export const ARTICLES: Article[] = [
     secondaryKeywords: ['cloud storage for beginners', '3-2-1 backup rule', 'zero knowledge cloud', 'cloud vs external drive', 'data redundancy'],
     excerpt: 'Syncing is not a backup. Understand how cloud storage services operate, protect your family archives with the 3-2-1 rule, and configure client-side encryption.',
     category: 'Hardware & Tech',
-    featuredImage: IMG_CLOUD,
-    featuredImageAlt: 'Laptop connected to synchronized cloud storage nodes on dark textured stone background',
+    featuredImage: IMG_CLOUD_STORAGE,
+    featuredImageAlt: 'Modern laptop surrounded by cloud synchronization data nodes and storage metrics on textured background',
     author: AUTHORS.david,
     publishDate: '2026-10-11',
     updatedDate: '2026-10-14',
@@ -872,8 +880,8 @@ export const ARTICLES: Article[] = [
     secondaryKeywords: ['speed up laptop', 'laptop thermal throttling', 'clean startup apps', 'laptop maintenance tips', 'boost laptop speed'],
     excerpt: 'Before spending a thousand dollars on a new machine, learn how to resolve thermal bottlenecks, disable stealth startup bloatware, and restore your computer’s original responsiveness.',
     category: 'Hardware & Tech',
-    featuredImage: IMG_CLOUD,
-    featuredImageAlt: 'Modern thin laptop on granite surface showing high efficiency and optimized operating system stats',
+    featuredImage: IMG_LAPTOP_PERFORMANCE,
+    featuredImageAlt: 'Precision engineered laptop chassis showing high efficiency thermal cooling copper pipes, fans, and internal hardware architecture',
     author: AUTHORS.david,
     publishDate: '2026-10-12',
     updatedDate: '2026-10-14',
@@ -946,8 +954,8 @@ export const ARTICLES: Article[] = [
     secondaryKeywords: ['digital productivity remote work', 'asynchronous communication', 'work from home efficiency', 'remote team workflows'],
     excerpt: 'Remote work failure is rarely a lack of motivation; it is the exhaustion of real-time messaging pings and fragmented attention. Learn how to thrive asynchronously.',
     category: 'Productivity',
-    featuredImage: IMG_PRODUCTIVITY,
-    featuredImageAlt: 'Quiet home office with ergonomic chair, organized digital workspace, and calming morning natural light',
+    featuredImage: IMG_REMOTE_WORK,
+    featuredImageAlt: 'Sunlit serene home workspace with solid walnut standing desk, laptop, and lush indoor plants for quiet focus',
     author: AUTHORS.sarah,
     publishDate: '2026-10-13',
     updatedDate: '2026-10-14',
@@ -1019,8 +1027,8 @@ export const ARTICLES: Article[] = [
     secondaryKeywords: ['detect phishing email', 'phishing red flags', 'spear phishing defense', 'email security tips', 'fake email warning signs'],
     excerpt: 'Grammar errors are no longer the primary tell of cyber scams. Learn how generative AI has sharpened email deception and how to spot subtle technical inconsistencies.',
     category: 'Online Privacy',
-    featuredImage: IMG_PRIVACY,
-    featuredImageAlt: 'Digital security warning matrix showing email encryption certificates and threat analysis',
+    featuredImage: IMG_PHISHING,
+    featuredImageAlt: 'Cybersecurity analyst inspecting verified digital security certificates and email headers for phishing detection',
     author: AUTHORS.marcus,
     publishDate: '2026-10-14',
     updatedDate: '2026-10-14',

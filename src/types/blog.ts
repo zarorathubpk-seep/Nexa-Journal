@@ -69,4 +69,5 @@ export interface CategoryInfo {
   slug: string;
   description: string;
   accentColor: string;
+  image?: string;
 }

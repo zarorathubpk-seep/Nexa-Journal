@@ -1,6 +1,7 @@
 import React from 'react';
 import { Article } from '../types/blog.ts';
 import { Clock, ArrowRight } from 'lucide-react';
+import { getAssetUrl } from '../utils/imageHelper.ts';
 
 interface HeroFeaturedProps {
   article: Article;
@@ -21,7 +22,7 @@ export const HeroFeatured: React.FC<HeroFeaturedProps> = ({
             className="lg:col-span-7 relative min-h-[320px] sm:min-h-[420px] lg:min-h-full cursor-pointer overflow-hidden group"
           >
             <img
-              src={article.featuredImage}
+              src={getAssetUrl(article.featuredImage)}
               alt={article.featuredImageAlt}
               referrerPolicy="no-referrer"
               className="w-full h-full object-cover object-center group-hover:scale-[1.02] transition-transform duration-500"

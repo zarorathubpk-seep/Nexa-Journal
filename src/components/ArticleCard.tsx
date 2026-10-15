@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Article } from '../types/blog.ts';
-import { Bookmark, Clock } from 'lucide-react';
+import { Bookmark, Clock, ImageOff } from 'lucide-react';
+import { getAssetUrl } from '../utils/imageHelper.ts';
 
 interface ArticleCardProps {
   article: Article;
@@ -17,6 +18,8 @@ export const ArticleCard: React.FC<ArticleCardProps> = ({
   onToggleBookmark,
   compact = false,
 }) => {
+  const [imageFailed, setImageFailed] = useState(false);
+
   return (
     <article
       onClick={() => onSelectArticle(article.slug)}
@@ -24,13 +27,21 @@ export const ArticleCard: React.FC<ArticleCardProps> = ({
     >
       {/* Featured Image Container */}
       <div className={`relative overflow-hidden bg-slate-100 dark:bg-slate-800 ${compact ? 'aspect-[16/9]' : 'aspect-[16/10]'}`}>
-        <img
-          src={article.featuredImage}
-          alt={article.featuredImageAlt}
-          referrerPolicy="no-referrer"
-          loading="lazy"
-          className="w-full h-full object-cover object-center group-hover:scale-[1.02] transition-transform duration-300"
-        />
+        {!imageFailed ? (
+          <img
+            src={getAssetUrl(article.featuredImage)}
+            alt={article.featuredImageAlt}
+            referrerPolicy="no-referrer"
+            loading="lazy"
+            onError={() => setImageFailed(true)}
+            className="w-full h-full object-cover object-center group-hover:scale-[1.02] transition-transform duration-300"
+          />
+        ) : (
+          <div className="w-full h-full flex flex-col items-center justify-center p-4 bg-slate-100 dark:bg-slate-800 text-slate-400">
+            <ImageOff className="w-8 h-8 mb-1 opacity-50" />
+            <span className="text-[11px] text-center font-medium line-clamp-1">{article.title}</span>
+          </div>
+        )}
 
         {/* Bookmark quick button */}
         {onToggleBookmark && (
