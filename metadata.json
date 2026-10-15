@@ -1,0 +1,8 @@
+{
+  "name": "NexaJournal",
+  "description": "Premium technology, AI, online privacy, and digital productivity publication with in-depth guides and actionable editorial insights.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
